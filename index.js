@@ -74,11 +74,32 @@ function request(str, cb) {
   req.end();
 }
 
+// Using Marked as markdown parser
+var m = require('marked');
+var hljs = require('highlight.js');
+function usemarked(data, cb) {
+    m.setOptions({
+      pedantic: false,
+      gfm: true,
+      sanitize: false,
+      tables: true,
+      breaks: false,
+      smartLists: true,
+      highlight: function(code, lang) {
+        return hljs.highlightAuto(code).value;
+      },
+      langPrefix: 'language-'
+    });
+    //console.log(m(data.toString('utf-8')));
+    cb(null, m(data.toString('utf-8')));
+}
+
 function read(path, cb) {
   fs.readFile(path, function(err, data) {
     if (err) throw err;
     if (data.length === '') return;
-    request(data, cb);
+    //request(data, cb);
+    usemarked(data, cb);
   });
 }
 

@@ -1,7 +1,7 @@
 {
   "name": "markup",
-  "version": "0.0.3",
-  "description": "realtime rendering markdown using github api",
+  "version": "0.0.4",
+  "description": "realtime markdown renderer using marked, highlight.js and socket.io",
   "repository": { "type": "git", "url": "git://github.com/Jxck/markup.git" },
   "main": "index.js",
   "bin": {
@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "connect": "~2.4.3",
-    "socket.io": "~0.9.10"
+    "socket.io": "~0.9.10",
+    "marked": "~0.2.8",
+    "highlight.js": "~7.3.0"
   },
   "devDependencies": {},
   "scripts": {
